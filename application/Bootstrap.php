@@ -38,15 +38,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
             Zend_Db_Table::getDefaultAdapter()->getConnection(); // test connexion
         }
         catch (Exception $e){
-            
+            $this->bootstrap('logDated'); // init log dated
+            $this->bootstrap('frontController'); // init frontcontroller resource to know if we should displayException
+            Zend_Registry::get('log')->err( $e ); // insert error log in log
+                
             // debug mode (we display error directly on the page
-            if ( $this->getResource('config')->settings->alwaysThrowException ){
-                echo $e;
+            if ( (bool)Zend_Controller_Front::getInstance()->getParam('displayExceptions') ){
+                echo "Unable to load Database<br>" . $e;
                 exit(1);
             }
             else{
-                $this->bootstrap('logDated'); // init log dated
-                Zend_Registry::get('log')->err( $e ); // insert error log in log
                 include APPLICATION_PATH . '/views/scripts/error/nobdd.html'; // display special front page
                 exit(1);
             }
