@@ -6,6 +6,7 @@
  *      présent dans un des fichier .ini chargé dans index.php. Seul les resources
  *      officiel ZF peuvent être chargé
  * 
+ * 
  */
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap{
  
