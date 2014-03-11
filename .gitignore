@@ -30,3 +30,9 @@ manifest.mf
 # Internal			 #
 # ------------------ #
 /docs/
+
+# ------------------ #
+# Zend Framework	 #
+# ------------------ #
+/data/logs/*
+/data/tmp/*
