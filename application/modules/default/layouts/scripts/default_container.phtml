@@ -20,16 +20,13 @@
         $this->headLink()->appendStylesheet(RESOURCES_BASEURL . '/plugins/prettify/prettify.css');
         $this->headScript()->appendFile(RESOURCES_BASEURL . "/plugins/prettify/prettify.js");
         
-        // Kickstart (framework css + js)
-        $this->headLink()->appendStylesheet(RESOURCES_BASEURL . '/plugins/KickStart/css/kickstart-icons.css');
-        $this->headScript()->appendFile(RESOURCES_BASEURL . "/plugins/KickStart/js/kickstart_icons.js");
-        
         // Chosen (plugin js qui restyle les select)
         $this->headLink()->appendStylesheet(RESOURCES_BASEURL . '/plugins/harvesthq-chosen-v0.9.8-44-gdc024d7/chosen/chosen.css');
         $this->headScript()->appendFile(RESOURCES_BASEURL . '/plugins/harvesthq-chosen-v0.9.8-44-gdc024d7/chosen/chosen.jquery.min.js');
         
         // Font awesome (font icone fonctionne avec bootstrap)
         $this->headLink()->appendStylesheet(RESOURCES_BASEURL . "/plugins/font-awesome/css/font-awesome.css");
+        $this->headLink()->appendStylesheet(RESOURCES_BASEURL . "/plugins/font-awesome-4.0.3/css/font-awesome.min.css");
          
         // http://tympanus.net/Development/ParallaxContentSlider/
         $this->headScript()->appendFile(RESOURCES_BASEURL . '/plugins/cslider/js/jquery.cslider.js');

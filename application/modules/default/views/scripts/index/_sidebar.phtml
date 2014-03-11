@@ -12,12 +12,12 @@ $this->headScript()->appendFile($this->baseUrl("/js/default/sidebar.js"));
             <h3><span class="icon-heart-empty" data-icon="H"></span> Suivez nous</h3>
             <div class="follow-group">
                 
-                <a href="<?php echo $this->url(array(),'feed'); ?>" >
-                    <span class="icon social gray medium follow-rss" data-icon="R" title="Abonnez vous à notre flux RSS" rel="tooltip-top"></span>
+                <a href="<?php echo $this->url(array(),'feed'); ?>" class="rss" title="Actualités RSS">
+                    <i class="fa fa-rss-square fa-2x"></i>
                 </a>
                 
-                <a href="https://www.facebook.com/pages/BDE-Miage-Nancy/136654919816299" >
-                    <span class="icon social gray medium follow-fb" data-icon="F" title="Visitez notre pas Facebook" rel="tooltip-top"></span>
+                <a href="https://www.facebook.com/bdemiagenancy" class="fb" title="Page Facebook">
+                    <i class="fa fa-facebook-square fa-2x"></i>
                 </a>
                 
             </div>

@@ -494,12 +494,15 @@ div.header-headband{
 
 ===============================================*/
 #page-articles #last_msg_loader{    margin-bottom:40px;    text-align: center;}
-/*======= Sidebar ===============================
+
+/*
+======= Sidebar ===============================
 
      Style de la barre de navigation
      latéral
 
-===============================================*/
+===============================================
+*/
 .sidebar{    position: relative;    font-size: 15px;    font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'serif';    text-shadow: white 1px 1px 0;}
 .sidebar.affix{    top: 40px;}
 .sidebar.absolute{    position: absolute;}
@@ -514,10 +517,10 @@ ul.logo li.miagere{    background-image: url('../../images/miagere_small.png');}
 .sidebar .follow a span{    color: darkgray;}
 .sidebar .follow .follow-group{    padding-left:21px;}
 .sidebar .follow a:hover span{    color: grey;}
-.sidebar .follow a span.follow-rss span{    color: #ffa256;}
-.sidebar .follow a:hover span.follow-rss span{    color: #e75f23;}
-.sidebar .follow a span.follow-fb span{    color: #6d8bca;}
-.sidebar .follow a:hover span.follow-fb span{    color: #3b5998;}
+.sidebar .follow a.rss {    color: #ffa256; text-shadow: none;}
+.sidebar .follow a.rss:hover {    color: #e75f23;}
+.sidebar .follow a.fb {    color: #6d8bca; text-shadow: none;}
+.sidebar .follow a.fb:hover {    color: #3b5998;}
 .sidebar ul.alt{    padding-left:5px;}
 .sidebar ul.logo{    padding-left:23px;}
 .sidebar ul.unstyled{    padding-left:25px;}
