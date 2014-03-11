@@ -12,8 +12,6 @@ class Admin_Form_User_UpdatePref extends Application_Form_Abstract{
     public function init(){
         parent::init();
         
-        $this->_noSuccess = true;
-
         $options = array(
             0 => 'Pseudo',
             1 => 'Nom',

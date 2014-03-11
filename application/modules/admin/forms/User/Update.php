@@ -5,8 +5,6 @@ class Admin_Form_User_Update extends Application_Form_Abstract{
     public function init(){
         parent::init();
         
-        $this->_noSuccess = true; // je crois qu'elle sert plus à rien mais je suis pas sure ^^
-        
         $this->addElement('hidden', 'triggerUpdate', array(
             'value' => 1
         ));

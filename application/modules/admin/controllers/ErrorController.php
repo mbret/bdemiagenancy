@@ -1,6 +1,8 @@
 <?php
 
-class Admin_ErrorController extends Zend_Controller_Action
+require_once 'AbstractController.php';
+
+class Admin_ErrorController extends Admin_AbstractController
 {
 
     public function errorAction()

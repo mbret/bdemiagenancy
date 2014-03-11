@@ -15,8 +15,6 @@ class Admin_Form_User_UpdatePassword extends Application_Form_Abstract{
     public function init(){
         parent::init();
         
-        $this->_noSuccess = true;
-        
         /**
          * Ancien password
          */
