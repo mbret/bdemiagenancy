@@ -1,0 +1,48 @@
+<?php
+$this->headTitle('Mots-clefs - Modification');
+?>
+
+
+<div class="row-fluid">
+    <div class="box span12">
+        
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Modification du tag : <?php echo $this->escape($this->tag->label); ?></h2>
+        </div>
+        
+        <div class="box-content">
+            
+            <!-- add form -->
+            <form enctype="application/x-www-form-urlencoded" 
+                  method="<?php echo $this->form->getMethod() ?>" 
+                  action="<?php echo $this->form->getAction()?>" 
+                  class="form-horizontal">
+                <fieldset>
+                
+                    <div class="control-group">
+                    <label class="control-label" for="">Nom</label>
+                    <div class="controls">
+                        <input class="input-xxlarge" id="label" name="label" type="text" value="<?php echo $this->form->getValue('label'); ?>">
+                        <span class="help-inline red">Requis</span>
+                    </div>
+                </div>
+                    
+                <div class="control-group">
+                    <label class="control-label" for="">Description</label>
+                    <div class="controls">
+                        <textarea name="description" id="description" class="input-xxlarge" rows="5" cols="80"><?php echo $this->form->getValue('description'); ?></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" name="submit" id="submit" class="btn btn-primary btn-submit">Modifier le mot-clef</button>
+                    <button class="btn" type="reset">Annuler</button>
+                </div>
+                
+                </fieldset>
+            </form>
+            <!-- end: add form -->
+            
+        </div>
+    </div><!--/span-->
+</div>

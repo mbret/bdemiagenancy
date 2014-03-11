@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+    Created on : Mar 10, 2014, 5:03:49 PM
+    Author     : Maxime
+*/
+/*===============================================================================================
+                        
+                                       Dashboard plugins
+
+===============================================================================================*/
+.alert-danger h4, .alert-error h4 {    padding-bottom: 5px;}
+
+/*===============================================================================================
+                        
+                                        Admin CSS
+
+===============================================================================================*/
+html{    height:100%;}
+body{    height: 100%;}
+span.white{    color: white;    text-shadow: 1px 1px 2px #0A0C0E;}
+.navbar img.avatar{    border:2px solid white;    max-height: 30px;    -webkit-border-radius: 500px;    -moz-border-radius: 500px;    border-radius: 500px;}
+#content{    -min-height: 1024px;}
+#content #main-content{    padding-bottom: 50px;}
+.chat .article a{   color: #67C2EF;}
+form.article hr{    margin: 30px 0px;}
+.popover{    font-size: 14px ;    white-space: normal ;}

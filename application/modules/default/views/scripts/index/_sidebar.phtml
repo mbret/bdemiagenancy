@@ -1,0 +1,89 @@
+<?php
+$this->headScript()->appendFile($this->baseUrl("/js/default/sidebar.js"));
+?>
+
+
+<section role="sidebar" class="sidebar sidebar-scroll " >
+
+    <div class="indent"></div>
+    
+        <!-- SOCIAL NETWORK -->
+        <div class="follow">
+            <h3><span class="icon-heart-empty" data-icon="H"></span> Suivez nous</h3>
+            <div class="follow-group">
+                
+                <a href="<?php echo $this->url(array(),'feed'); ?>" >
+                    <span class="icon social gray medium follow-rss" data-icon="R" title="Abonnez vous à notre flux RSS" rel="tooltip-top"></span>
+                </a>
+                
+                <a href="https://www.facebook.com/pages/BDE-Miage-Nancy/136654919816299" >
+                    <span class="icon social gray medium follow-fb" data-icon="F" title="Visitez notre pas Facebook" rel="tooltip-top"></span>
+                </a>
+                
+            </div>
+        </div>
+
+        
+        
+
+        <div class="separate"></div>
+
+        <div class="">
+            <h3><span class=" icon-pushpin" data-icon="7"></span> Articles récents</h3>
+            <ul class="alt">
+                <?php foreach($this->recentArticles(5) as $article): ?>    
+                    <li>
+                        <a href="<?php echo $this->url(array('controller'=> 'index', 'action' => 'article', 'id' => $article['id']),'default',true); ?>">
+                        <?php echo $article['title']; ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        
+        
+        <div class="separate"></div>
+        
+        <div>
+            <h3><i class="icon-inbox"></i> Archives</h3>
+            <ul class="unstyled link">
+                <?php $first = true; ?>
+                <?php foreach($this->archives() as $key => $entry): ?> 
+                    <li>
+                        <a class="archives-year archives-year-sidebar" rel2="sidebar" rel="archives-month-<?php echo $key; ?>-sidebar" href="#"><i class="icon-link "></i> <?php echo $key; ?> </a>
+                        <ul class="unstyled archives-month <?php if($first) echo 'archives-month-first'; ?>" id="archives-month-<?php echo $key; ?>-sidebar">
+                            <?php foreach($entry as $entry2): ?> 
+                                <li>
+                                    <a href="<?php echo $this->url(array('controller' => 'index','action' => 'articles'),null,true) . '?year=' . $key . '&month=' . $entry2['month']; ?>">
+                                    <?php echo $this->monthString($entry2['month']); ?> (<?php echo $entry2['nb']; ?>)
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php $first = false; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        
+        <div class="separate"></div>
+        
+        <!-- NETWORK / PARTNER -->
+        <div>
+            <h3><i class="icon-cloud"></i> Notre réseau</h3>
+            <ul class="unstyled separate">
+                <li class="miagere"><a href="http://www.miagere.com/" title="Association Miage Réalisations" >MiageRé</a></li>
+                <li class="miagere"><a href="http://www.miage.net/" title="Miage connection">Miage connection</a></li>
+                <li class="miagere"><a href="http://www.lesjoiesdelamiagenancy.fr/" title="Les joies de la Miage Nancy">Les joies de la Miage Nancy</A></li>
+            </ul>
+        </div>
+        
+        
+        <div class="separate"></div>
+
+        
+        <div class="copyright">
+            <p><?php echo $this->getConfig()->settings->copyright; ?>.</p>
+        </div>
+        
+</section>

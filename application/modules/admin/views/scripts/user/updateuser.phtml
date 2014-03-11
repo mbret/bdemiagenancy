@@ -1,0 +1,104 @@
+<?php
+$this->headTitle('Modifier un utilisateur');
+?>
+
+
+<div class="row-fluid">
+    <div class="box span12">
+        
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Modifier le profil de : <?php echo $this->user->username; ?></h2>
+        </div>
+        
+        <div class="box-content">
+            
+            <!-- update form -->
+            <form class="form-horizontal" method="post" action="">
+                <fieldset>
+                   
+                    <div class="control-group">
+                        <label class="control-label" for="">Prénom</label>
+                        <div class="controls">
+                          <input class="input-xlarge" id="firstname" name="firstname" type="text" value="<?php echo $this->form->getValue('firstname'); ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Nom</label>
+                        <div class="controls">
+                          <input class="input-xlarge" id="name" name="name" type="text" value="<?php echo $this->form->getValue('name'); ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Date de naissance</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="birthday" name="birthday" type="text" value="<?php echo $this->form->getValue('birthday'); ?>" >
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Pseudo</label>
+                        <div class="controls">
+                          <input class="input-xlarge" id="username" name="username" type="text" value="<?php echo $this->form->getValue('username'); ?>" disabled>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="prependedInput">E-mail</label>
+                        <div class="controls">
+                            <input id="mail" class="input-xlarge" name="mail" size="16" type="text" value="<?php echo $this->form->getValue('mail'); ?>">
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">E-mail Gravatar</label>
+                        <div class="controls">
+                          <input class="input-xlarge" id="mailGravatar" name="mailGravatar" type="text" value="<?php echo $this->form->getValue('mailGravatar'); ?>" >
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Site web</label>
+                        <div class="controls">
+                          <input class="input-xxlarge" id="website" name="website" type="text" value="<?php echo $this->form->getValue('website'); ?>" >
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">A propos de <?php echo $this->user->username; ?></label>
+                        <div class="controls">
+                            <textarea name="about" id="about" class="input-xxlarge" rows="5" cols="80"><?php echo $this->form->getValue('about'); ?></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Rôle</label>
+                        <div class="controls">
+                            <?php echo $this->form->getElement('roleId')->renderViewHelper(); ?>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" name="submit" id="submit" class="btn btn-primary btn-submit">Enregistrer</button>
+                        <button class="btn" type="reset">Annuler</button>
+                    </div>
+                    
+                </fieldset>
+            </form>
+            
+        </div>
+    </div><!--/span-->
+</div>
+
+<script>
+    $(function() {
+        $( "#birthday" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1950:"
+        });
+    });
+</script>

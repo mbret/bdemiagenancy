@@ -1,0 +1,20 @@
+
+# ------------------ #
+# Netbeans			 #
+# ------------------ #
+nbproject
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+build.xml
+manifest.xml
+manifest.mf
+.zfproject.xml
+
+# ------------------ #
+# Internal			 #
+# ------------------ #
+/docs/

@@ -1,0 +1,49 @@
+<?php
+$this->headTitle('Supprimer un utilisateur');
+?>
+
+<div class="row-fluid">
+    <div class="box span12">
+        
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Configuration avant suppression de : <?php echo $this->user->username; ?></h2>
+        </div>
+        
+        <div class="box-content">
+
+            <!-- update form -->
+            <form  class="form-horizontal" method="post" action="">
+                
+                <fieldset>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Attribuer les articles à</label>
+                        <div class="controls">
+                            <?php echo $this->form->getElement('user')->renderViewHelper(); ?>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="valid">Je souhaite supprimer l'utilisateur</label>
+                        <div class="controls">
+                          <label class="checkbox">
+                                <div class="checker" id="uniform-inlineCheckbox1">
+                                    <span>
+                                        <input type="hidden" name="valid" value="0">
+                                        <input type="checkbox" id="valid" name="valid" <?php if($this->form->valid->isChecked()) echo "checked"; ?> value="1">
+                                    </span>
+                                </div>
+                          </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" name="submit" id="submit" class="btn btn-primary btn-submit btn-danger">Supprimer l'utilisateur</button>
+                    </div>
+                    
+                </fieldset>
+            </form>
+            
+        </div>
+    </div><!--/span-->
+</div>

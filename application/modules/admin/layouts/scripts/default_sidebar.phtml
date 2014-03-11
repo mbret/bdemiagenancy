@@ -1,0 +1,92 @@
+<p><i class="fa-icon-unlock"></i> Connecté sous <?php echo $this->userIdentity()->username; ?></p>
+
+<div class="nav-collapse sidebar-nav">
+    <ul class="nav nav-tabs nav-stacked main-menu">
+        
+        <!-- home -->
+        <li class="<?php echo $this->placeholder('nav_home'); ?>"><a href="<?php echo $this->url(array(), 'admin'); ?>"><i class="icon-home icon-white"></i><span class="hidden-tablet"> Accueil</span></a></li>
+        <!-- end: home -->
+        
+        <!-- article index -->
+        <?php if($this->isAllowed('admin_article', 'index')): ?>
+            <li>
+                <a class="dropmenu" href="#">
+                    <i class="fa-icon-chevron-down"></i>
+                    <span class=""> Article</span>
+                </a>
+                <ul>
+                    <li class="<?php echo $this->placeholder('nav_admin_article_index'); ?>">
+                        <a href="<?php echo $this->url(array('action'=>'list', 'controller'=>'article', 'module'=>'admin'), null, true); ?>">
+                            <i class="icon-list-alt icon-white"></i><span class="hidden-tablet"> Liste des articles</span>
+                        </a>
+                    </li>
+            
+                    <!-- article write -->
+                    <?php if($this->isAllowed('admin_article', 'write')): ?>
+                        <li class="<?php echo $this->placeholder('nav_admin_article_write'); ?>">
+                            <a href="<?php echo $this->url(array('action'=>'write', 'controller'=>'article', 'module'=>'admin'), null, true); ?>">
+                                <i class="icon-edit icon-white"></i><span class="hidden-tablet"> Rédiger un article</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <!-- end: article index -->
+                </ul>
+            </li>
+            <!-- tag index -->
+            <?php if($this->isAllowed('admin_tag', 'index')): ?>
+                <li class="<?php echo $this->placeholder('nav_admin_tag_index'); ?>"><a href="<?php echo $this->url(array('action'=>'index', 'controller'=>'tag', 'module'=>'admin'), null, true); ?>"><i class="icon-tags icon-white"></i><span class="hidden-tablet"> Mots-clefs</span></a></li>
+            <?php endif; ?> 
+            <!-- end: tag index -->
+            
+            <!-- category index -->
+            <?php if($this->isAllowed('admin_category', 'index')): ?>
+                <li class="<?php echo $this->placeholder('nav_admin_category_index'); ?>"><a href="<?php echo $this->url(array('action'=>'index', 'controller'=>'category', 'module'=>'admin'), null, true); ?>"><i class="icon-bookmark icon-white"></i><span class="hidden-tablet"> Catégories</span></a></li>
+            <?php endif; ?> 
+            <!-- end: category index -->
+            
+        <?php endif; ?>      
+        <!-- end: article index -->
+        
+        <li>
+            <a class="dropmenu" href="#">
+                <i class="fa-icon-chevron-down"></i>
+                <span class=""> Utilisateurs</span>
+            </a>
+            <ul>
+                
+            <!-- users -->
+            <?php if($this->isAllowed('admin_user', 'users')): ?>
+                <li class="<?php echo $this->placeholder('nav_admin_user_users'); ?>"><a href="<?php echo $this->url(array('action'=>'users', 'controller'=>'user', 'module'=>'admin'), null, true); ?>"><i class="fa-icon-group icon-white"></i><span class="hidden-tablet"> Liste des utilisateurs</span></a></li>
+            <?php endif; ?>
+            <!-- end: users -->  
+
+            <!-- user add -->
+            <?php if($this->isAllowed('admin_user', 'adduser')): ?>
+                <li class="<?php echo $this->placeholder('nav_admin_user_adduser'); ?>"><a href="<?php echo $this->url(array('action'=>'adduser', 'controller'=>'user', 'module'=>'admin'), null, true); ?>">
+                    <i class="fa-icon-plus-sign icon-white"></i><span class="hidden-tablet"> Ajouter un utilisateur</span></a>
+                </li>
+            <?php endif; ?>
+            <!-- end: user add -->
+            
+            </ul>
+        </li>
+        
+        <!-- profile -->
+        <li class="<?php echo $this->placeholder('nav_admin_user_update'); ?>"><a href="<?php echo $this->url(array(), 'profil'); ?>"><i class="fa-icon-user icon-white"></i><span class="hidden-tablet"> Mon profil</span></a></li>
+        <!-- end: profile -->
+        
+        <!-- file manager -->
+        <?php if($this->isAllowed('admin_setting', 'filemanager')): ?>
+            <li class="<?php echo $this->placeholder('nav_admin_setting_filemanager'); ?>"><a href="<?php echo $this->url(array('action'=>'filemanager', 'controller'=>'setting', 'module'=>'admin'), null, true); ?>"><i class="fa-icon-folder-open icon-white"></i><span class="hidden-tablet"> Gestions des fichiers</span></a></li>
+        <?php endif; ?>
+        <!-- end: file manager --> 
+        
+        <!--
+        Settings
+        -->
+        <?php if($this->isAllowed('admin_setting', 'setting')): ?>
+            <li class="<?php echo $this->placeholder('nav_admin_setting_setting'); ?>"><a href="<?php echo $this->url(array(), 'settings'); ?>"><i class="fa-icon-wrench icon-white"></i><span class="hidden-tablet"> Paramètres</span></a></li>
+        <?php endif; ?>  
+    
+    </ul>
+</div>

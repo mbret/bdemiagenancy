@@ -1,0 +1,75 @@
+<footer id="footer"  role="contentinfo">
+    <div class="container container-footer-main">
+        
+                <!-- Listes -->
+                <div class="row footer-link">  
+                    
+                    <div class="span3">
+                        <h3><span class=" icon-pushpin" data-icon="7"></span> Articles récents</h3>
+                        <ul class="alt">
+                            <?php foreach($this->recentArticles(5) as $article): ?>    
+                                <li>
+                                    <a class="a-main" href="<?php echo $this->url(array('controller'=> 'index', 'action' => 'article', 'id' => $article['id']),'default',true); ?>">
+                                    <?php echo $article['title']; ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+
+                    <div class="span3">
+                        <h3><i class="icon-inbox"></i> Archives</h3>
+                        <ul class="unstyled archives-container">
+                            <?php $first = true; ?>
+                            <?php foreach($this->archives() as $key => $entry): ?> 
+                                <li>
+                                    <a class="archives-year archives-year-footer a-main" rel2="footer" rel="archives-month-<?php echo $key; ?>-footer" href="#"><i class="icon-link "></i> <?php echo $key; ?> </a>
+                                    <ul class="unstyled archives-month <?php if($first) echo 'archives-month-first'; ?>" id="archives-month-<?php echo $key; ?>-footer">
+                                        <?php foreach($entry as $entry2): ?> 
+                                            <li>
+                                                <a href="<?php echo $this->url(array('controller' => 'index','action' => 'articles'),null,true) . '?year=' . $key . '&month=' . $entry2['month']; ?>">
+                                                <?php echo $this->monthString($entry2['month']); ?> (<?php echo $entry2['nb']; ?>)
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+                            <?php $first = false; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    
+                    <div class="span3">
+                        <h3><span class="icon-map-marker" data-icon="&"></span> Liens</h3>
+                        <ul class="unstyled ">
+                            <li><a class="a-main" href="<?php echo $this->url(array(), 'home'); ?>">Accueil</a></li>
+                            <li><a class="a-main" href="<?php echo $this->url(array(),'partner'); ?>">Nos Partenaires</a></li>
+                            <li><a class="a-main" href="<?php echo $this->url(array(),'about'); ?>">A propos de nous</a></li>
+                            <li><a class="a-main" href="<?php echo $this->url(array(),'statuts'); ?>">Statuts</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="span3">
+                        <h3><i class="icon-cloud"></i> Notre réseau</h3>
+                        <ul class="unstyled">
+                            <li class="miagere"><a class="a-main" href="http://www.miagere.com/" title="Association Miage Réalisations" >MiageRé</A></li>
+                            <li class="kebab"><a class="a-main" href="http://www.miage.net/" title="Miage connection">Miage connection</A></li>
+                            <li class="kebab"><a class="a-main" href="http://www.lesjoiesdelamiagenancy.fr/" title="Les joies de la Miage Nancy">Les joies de la Miage Nancy</A></li>
+                        </ul>
+                    </div>
+
+                </div><!--end:row-->
+            
+                <!-- Copyright -->
+                <div class="footer-copyright">
+                    <?php echo $this->getConfig()->settings->copyright; ?>. Site développé par <a href="mailto:maxime.bret6@etu.univ-lorraine.fr">Maxime Bret</a>. <a class="link-pre" href="<?php echo $this->url(array(),'legal'); ?>">— Mentions légales</a>
+                    <br>Design réalisé par <a href="mailto:maxime.bret6@etu.univ-lorraine.fr">Maxime Bret</a> et <a href="mailto:kevin.schneider3@etu.univ-lorraine.fr">Kevin Schneider</a>
+                </div>
+            
+        </div>
+    
+    <div id="footer-background-img-container">
+        <div id="footer-background-img"></div>
+    </div>
+    
+</footer>

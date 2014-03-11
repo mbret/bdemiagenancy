@@ -1,0 +1,62 @@
+<?php foreach ($this->articles as $article): ?>
+            
+<article class="post" rel="<?php echo $this->offset; ?>" rel1="<?php echo $this->count; ?>">
+
+    <!-- HEADER -->
+    <header>
+        
+        
+        <time>
+            <span><?php echo $this->monthString($article['month'], true); ?></span>
+            <span class="day"><?php echo $article['day']; ?></span>
+        </time>
+
+        <h1>
+            <a title="Voir l'article en entier" rel="tooltip-top" href="<?php echo $article['url']; ?>">
+                <?php echo $article['title']; ?>
+            </a>
+        </h1>
+
+        <!-- sub content -->
+        <div class="row-fluid content">
+            
+            <div class="span12 author">
+                <i class="icon-folder-open"></i>  
+                <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'articles', 'cat' => $article['category']['label']), null, true); ?>" rel="tooltip-right" title="Rechercher les articles de la catégorie <?php echo $article['category']['title']; ?>">
+                    <span class="label label-warning"><?php echo $article['category']['title']; ?></span>
+                </a>
+            </div>
+            
+        </div>
+        
+    </header>
+    <!-- END HEADER -->
+    
+    <div class="post-wrapper">
+        
+        <section>
+            <?php echo $this->showArticleContent($article['content'], $article['id']); ?>
+        </section>
+
+        <hr>
+        
+        <footer>
+            <div class="row-fluid">
+                <div class="span4">
+                    Rédigé par <?php echo $article['author']->authorDisplayName; ?> le <?php echo $this->date($article['date'], "dd-MM-yyyy"); ?>
+                </div>
+                <div class="span4">
+                    <fb:like href="<?php echo $this->url(); ?>" send="true" layout="button_count" width="250" show_faces="false" font="lucida grande"></fb:like>
+                </div> 
+                <div class="span4">
+                    <li class="tags"><i class="icon-tags"></i> Mots clefs : 
+                    <?php foreach ($article['tags'] as $tag): ?>
+                        <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'articles', 'tag' => $tag->label), null, true); ?>"  rel="" title="Rechercher des articles ayant le tag #<?php echo $tag->label; ?>"><span class="label label-info"><?php echo $tag->label; ?></span></a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</article>
+<?php endforeach; ?>

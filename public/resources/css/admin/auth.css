@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+    Created on : Mar 10, 2014, 5:03:49 PM
+    Author     : Maxime
+*/
+/*===============================================================================================
+                        
+                                        Dashboard plugins
+
+===============================================================================================*/
+.login-box{    margin-top:0px;    width: 500px;}
+.login-box .alert{
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    border-left: none !important;
+    border-right: none !important;
+}
+.login-box h2{    color: #646464;    font-size: 20px;}
+.login-box pre{    width: 86%;    margin-left:20px;    margin-top:10px;}
+/* style qui permet d'afficher les help block errors de bootstrap */
+.login-box .errors{    list-style: none;    margin-bottom: 0px;}
+.login-box .errors li{    text-align: left;    color: #d96e6d;    font-size: 12px;}
+.login-box input[type="text"], .login-box input[type="password"] {
+    border-color: #DDD !important;
+}
+.login-box .add-on {
+    border-color: #DDD !important;
+    color: #DDD !important;
+}
+.login-box .popover h3{
+    margin-left: 0px;
+}
+.popover{    font-size: 14px;    white-space: normal;}
+
+
+/* fix dashboard */
+@media (max-width: 767px){
+    .input-prepend input, .input-append input, .input-prepend input[class*="span"], .input-append input[class*="span"] {
+    width: 82.97872340425532% !important;
+    }
+}
+
+/*===============================================================================================
+                        
+                                        Auth CSS
+
+===============================================================================================*/
+body.auth{
+    -font: 13px/1.7em 'Open Sans';
+    color: #838383;
+    background: #eeeeee;
+    background-image: url('../../images/bg-login.jpg');
+    -text-shadow: white 1px 1px 0px;
+}
+/* overwrite font style to all elements */
+body.auth h2, body.auth h3, body.auth button{ font-family: 'Open Sans';}
+body.auth #header-main{overflow: hidden; margin: 0px; width:100%;}
+body.auth #header-main .header-logo-container a{
+    display: block;
+    background-image: url('../../images/header-reduce.png');
+    width: 100%;
+    background-repeat: no-repeat;
+    height:366px;
+    background-position: center;
+}
+
+
+body.auth .tooltip{
+    display: block !important;
+    visibility: visible !important;
+}
+body.auth .captcha-field{
+    
+}
+body.auth #captcha-element #recaptcha_area{
+    margin: auto;
+}

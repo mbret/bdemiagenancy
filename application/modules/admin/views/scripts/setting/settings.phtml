@@ -1,0 +1,42 @@
+<?php
+$this->headTitle('Paramètres');
+?>
+
+<div class="row-fluid sortable ui-sortable">
+    <div class="box span12">
+        <div class="box-header">
+                <h2><i class="fa-icon-wrench"></i><span class="break"></span>Option générale</h2>
+        </div>
+        <div class="box-content">
+            <form enctype="application/x-www-form-urlencoded" method="post" action="" class="form-horizontal">
+                <fieldset>
+                
+                <div class="control-group">
+                    <label class="control-label" for="">Message publique (Administration)</label>
+                    <div class="controls">
+                        <textarea name="alertAdmin" id="alertAdmin" class="input-xxlarge limited" rows="5" cols="80" maxlength="500"><?php echo $this->form->getValue('alertAdmin'); ?></textarea>
+                    </div>
+                </div>
+                    
+                <div class="control-group">
+                    <label class="control-label" for="">Message publique</label>
+                    <div class="controls">
+                        <textarea name="alertPublic" id="alertPublic" class="input-xxlarge limited" rows="5" cols="80" maxlength="500"><?php echo $this->form->getValue('alertPublic'); ?></textarea>
+                    </div>
+                </div>
+                    
+                <label class="control-label" for="">Nombre d'articles mis en avant</label>
+                <div class="controls">
+                    <input class="" id="nbArticlesForward" name="nbArticlesForward" type="text" value="<?php echo $this->form->getValue('nbArticlesForward'); ?>" data-placement="top" data-original-title="Controle le nombres d'articles mis en avant sur la page d'accueil." data-toggle="tooltip">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" name="submit" id="submit" class="btn btn-primary btn-submit">Enregistrer</button>
+                    <button class="btn" type="reset">Annuler</button>
+                </div>
+                
+                </fieldset>
+            </form>
+        </div>
+    </div><!--/span-->
+</div>

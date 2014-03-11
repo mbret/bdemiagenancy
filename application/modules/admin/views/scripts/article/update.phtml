@@ -1,0 +1,127 @@
+<?php
+$this->headTitle('Modifier un article');
+$this->headScript()->offsetSetFile(501, RESOURCES_BASEURL . "/js/admin/tinyMce.js"); // wywiwys
+?>
+
+        
+<div class="row-fluid" style="padding-bottom: 100px;"> <!-- fix pour combobox qui ressort -->
+
+    <div class="box span12">
+        
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Modifier un article</h2>
+            <div class="box-icon">
+            </div>
+        </div>
+        
+        <div class="box-content">
+
+            <!-- add form -->
+            <form class="form-horizontal"
+                  method="<?php echo $this->form->getMethod(); ?>" 
+                  id="<?php echo $this->form->getAttrib('id'); ?>"
+                  action="<?php echo $this->form->getAction(); ?>"
+                  name="<?php echo $this->form->getName(); ?>">
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <div class="control-group">
+                            <label class="control-label" for="isPublished">Publier l'article</label>
+                            <div class="controls">
+                              <label class="checkbox">
+                                    <div class="checker" id="uniform-inlineCheckbox1">
+                                        <span>
+                                            <input type="hidden" name="isPublished" value="0">
+                                            <input type="checkbox" id="isPublished" name="isPublished" <?php if($this->form->isPublished->isChecked()) echo "checked"; ?> value="1">
+                                        </span>
+                                    </div>
+                              </label>
+                            </div>
+                        </div>
+                        
+                        <div class="control-group text-center">
+                            <?php if($this->article->isPublished): ?>
+                                <a class="btn btn-success" rel="tooltip" title="Afficher l'article" target="_blank" href="<?php echo $this->url(array('controller'=> 'index', 'action' => 'article', 'module' => 'default', 'id' => $this->article->id),'default',true); ?>">
+                                    <i class="icon-zoom-in icon-white"></i> Afficher l'article
+                                </a>
+                            <?php else: ?>
+                                <!-- preview -->
+                                <a class="btn btn-warning" rel="tooltip" title="Prévisualiser" target="_blank" href="<?php echo $this->url(array('controller'=> 'index', 'action' => 'article', 'module' => 'default', 'id' => $this->article->id, 'preview' => 'true'),'default',true); ?>">
+                                    <i class="icon-zoom-in icon-white"></i> Prévisualiser
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="span9">
+                        <div class="control-group">
+                            <label class="control-label" for="putForward">Mettre l'article en avant</label>
+                            <div class="controls">
+                              <label class="checkbox">
+                                    <div class="checker" id="uniform-inlineCheckbox1">
+                                        <span>
+                                            <input type="hidden" name="putForward" value="0">
+                                            <input type="checkbox" id="putForward" name="putForward" <?php if($this->form->putForward->isChecked()) echo "checked"; ?> value="1">
+                                        </span>
+                                    </div>
+                              </label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Titre de la mise en avant</label>
+                            <div class="controls">
+                              <input class="input-xxlarge" id="forwardTitle" name="forwardTitle" type="text" value="<?php echo $this->form->getValue('forwardTitle'); ?>" data-rel="tooltip" data-placement="bottom" data-original-title="Minimum 5 caractères">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="">Contenu de la mise en avant</label>
+                            <div class="controls">
+                                <textarea name="forwardContent" id="forwardContent" class="input-xxlarge" rows="5" data-placement="bottom" data-original-title="Le contenu doit être court (150 - 200 caractères max). Il n'est pas non plus formatable à l'aide de balise html" data-rel="tooltip" cols="80"><?php echo $this->form->getValue('forwardContent'); ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="control-group">
+                    <label class="control-label" for="">Titre</label>
+                    <div class="controls">
+                      <input class="input-xxlarge" id="title" name="title" type="text" value="<?php echo $this->form->getValue('title'); ?>">
+                      <span class="help-inline red">Requis</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="">Catégorie</label>
+                    <div class="controls">
+                        <?php echo $this->form->getElement('categoryId')->renderViewHelper(); ?>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="">Contenu de l'article</label>
+                    <div class="controls">
+                        <textarea name="articleContent" id="articleContent" class="wysiwyg" rows="10" ><?php echo $this->form->getValue('articleContent'); ?></textarea>
+                    </div>
+                </div>
+                
+                
+                <div class="control-group">
+                    <label class="control-label" for="tags">Mots-clefs</label>
+                    <div class="controls">
+                        <?php echo $this->form->getElement('tags')->renderViewHelper(); ?>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" name="submit" id="submit" class="btn btn-primary btn-submit">Enregistrer</button>
+                    <button class="btn" type="reset">Annuler</button>
+                </div>
+                
+            </form>
+
+        </div>
+    </div>
+    
+</div>
+

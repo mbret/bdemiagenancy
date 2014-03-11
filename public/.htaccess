@@ -1,0 +1,31 @@
+###############################
+# development
+###############################
+# "active" PHP5
+#AddType x-mapp-php5 .php
+RewriteEngine On
+RewriteBase /bdemiage
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+# pour que google trouve le fichier robots.txt, on ne redirige pas vers index.php
+#RewriteRule ^robots.txt$ robots.txt [L]
+# pareil pour le fichier sitemap
+#RewriteRule ^sitemap.xml$ sitemap.xml [L]
+RewriteRule ^.*$ - [NC,L]
+# pour le reste, vers index.php, le bootstrap
+RewriteRule ^.*$ index.php [NC,L]
+#Options -MultiViews
+SetEnv APPLICATION_ENV development
+# AUTHENTIFICATION
+#AuthName "Authentification"
+#AuthType Basic
+#AuthUserFile "/homepages/43/d383245422/htdocs/beta/public/.htpasswd"
+#AuthUserFile "C:/wamp/www/bdemiage/public/.htpasswd"
+#Require valid-user
+
+###############################
+# production
+###############################
+#RewriteBase /
+#SetEnv APPLICATION_ENV production

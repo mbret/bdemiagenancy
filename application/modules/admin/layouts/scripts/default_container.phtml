@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+    
+<head>
+  
+
+    <?php
+        $this->headTitle()->setPostfix(' - Administration - BDE Miage Nancy');
+
+        // My style
+        $this->headLink()->appendStylesheet(RESOURCES_BASEURL . '/css/admin/default.css');
+        
+        // My script
+        $this->headScript()->appendFile(RESOURCES_BASEURL . "/js/admin/script.js");
+        
+        echo $this->headMeta();
+        echo $this->headTitle();
+        echo $this->headLink();
+        echo $this->headScript();
+
+    ?>
+                
+</head>
+    
+    <body>
+
+        <!-- animation switch page (theme feature) -->
+        <div id="overlay"><ul><li class="li1"></li><li class="li2"></li><li class="li3"></li><li class="li4"></li><li class="li5"></li><li class="li6"></li></ul></div>	
+
+        <!--
+        Header
+        -->
+        <?php echo $this->render('default_header.phtml'); ?>
+
+        
+        <div class="container-fluid">
+            <div class="row-fluid">
+
+                <!-- sidebar -->
+                <div class="span2 main-menu-span">
+                    <?php echo $this->render('default_sidebar.phtml'); ?>
+                </div>
+                <!-- end: sidebar -->
+
+                <!-- content -->
+                <div id="content" class="span10">
+
+                    <div id="main-content">
+
+                        <?php echo $this->renderMessages('alertAdmin'); ?>
+                        <?php echo $this->renderMessages('error'); ?>
+                        <?php echo $this->renderMessages('warning'); ?>
+                        <?php echo $this->renderMessages('success'); ?>
+                        
+                        <?php echo $this->generateBreadCrumb(); ?>
+
+                        <?php echo $this->layout()->content ?>
+
+                    </div>
+
+                </div>
+                <!-- /content -->
+            </div><!-- /fluid-row -->
+        </div> <!-- /container-fluid -->
+
+        <div class="clearfix"></div>
+
+        <!-- 
+        footer
+        -->
+        <footer>
+            <p>
+                <span style="text-align:left;float:left">&copy; Administration <a href="<?php echo $this->url(array(), 'home'); ?>">BDE Miage Nancy</a> 2013</span>
+                <span style="text-align:right;float:right">Version: <a href="#"><?php echo $this->getConfig()->settings->version->numero; ?> (<?php echo $this->getConfig()->settings->version->date; ?>)</a></span>
+            </p>
+            <div class="clearfix"></div>
+        </footer><!-- /footer -->
+
+        <?php
+        /**
+         * Fenetre de confirmation modulable
+         * Appelé et customisé via js (admin/script.js)
+         * Fenêtre simple qui redirige vers l'action demandé en fin de compte
+         */
+        ?>
+        <div id="modal-confirm" class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Confirmation</h3>
+            </div>
+            <div class="modal-body">
+                <p>Confirmer l'action.</p>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" aria-hidden="true" class="btn secondary">Annuler</button>
+                <a href="<?php echo $this->url(); ?>" class="btn btn-danger">Continuer</a>
+            </div>
+        </div>
+
+
+    </body>
+</html>

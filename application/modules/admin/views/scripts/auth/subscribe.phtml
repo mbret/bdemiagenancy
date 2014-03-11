@@ -1,0 +1,120 @@
+<?php
+$this->headTitle('Inscription');
+$this->placeHolder('body')->set('subscribe');
+?>
+
+
+<div class="login-box">
+    <div class="icons">
+        <a href="<?php echo $this->url(array(), 'home'); ?>" title="Retour site"><i class="icon-home"></i></a>
+    </div>
+    <h2>S'inscrire sur le site</h2>
+
+    <?php echo $this->renderMessages('error'); ?>
+    <?php echo $this->renderMessages('warning'); ?>
+
+    <form class="<?php echo $this->form->getAttrib('class'); ?>" method="<?php echo $this->form->getMethod(); ?>" id="<?php echo $this->form->getAttrib('id'); ?>"action="<?php echo $this->form->getAction(); ?>"name="<?php echo $this->form->getName(); ?>">
+        <fieldset>
+
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input class="input-large span10 special-prepend" name="username" id="username" type="text" value="<?php echo $this->form->getValue('username'); ?>" placeholder="Pseudo" data-toggle="tooltip" data-placement="bottom"  data-original-title="Majuscules non prises en compte"/>
+                <?php if($this->form->username->hasErrors()): ?>
+                    <ul class="help-block errors">
+                    <?php foreach ($this->form->username->getMessages() as $message): ?>
+                        <li><?php echo $message ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input type="text" name="mail" id="mail" value="<?php echo $this->form->getValue('mail'); ?>" class="input-large span10 special-prepend" placeholder="Email">
+                <?php if($this->form->mail->hasErrors()): ?>
+                    <ul class="help-block errors">
+                    <?php foreach ($this->form->mail->getMessages() as $message): ?>
+                        <li><?php echo $message ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-time"></i></span>
+                <input type="text" name="birthday" id="birthday" value="<?php echo $this->form->getValue('birthday'); ?>" class="input-large span10 special-prepend" placeholder="Date de naissance">
+                <?php if($this->form->birthday->hasErrors()): ?>
+                    <ul class="help-block errors">
+                    <?php foreach ($this->form->birthday->getMessages() as $message): ?>
+                        <li><?php echo $message ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                <input class="input-large span10 special-prepend" name="password" id="password" type="password" placeholder="Mot de passe" data-toggle="tooltip" data-placement="bottom" data-original-title="4 caractères minimum. Pour le rendre plus sûr, combinez majuscules, minuscules, et chiffres."/>
+                <?php if($this->form->password->hasErrors()): ?>
+                    <ul class="help-block errors">
+                    <?php foreach ($this->form->password->getMessages() as $message): ?>
+                        <li><?php echo $message ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+
+
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                <input type="password" name="checkPassword" id="checkPassword" value="" class="input-xlarge span10 special-prepend" placeholder="Retaper le mot de passe">
+                <?php if($this->form->checkPassword->hasErrors()): ?>
+                    <ul class="help-block errors">
+                    <?php foreach ($this->form->checkPassword->getMessages() as $message): ?>
+                        <li><?php echo $message ?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="captcha-field">
+                <?php echo $this->form->captcha; ?>
+                <?php if($this->form->captcha->hasErrors()): ?>
+                        <ul class="help-block errors">
+                        <?php foreach ($this->form->captcha->getMessages() as $message): ?>
+                            <li style="text-align: center"><?php echo $message ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
+
+
+            <div class="button-login">	
+                <button type="submit" class="btn btn-primary btn-submit"><i class="icon-off icon-white"></i> Inscription</button>
+            </div>
+            <div class="clearfix"></div>
+
+        </fieldset>
+    </form>
+    <hr>
+    <p>
+      J'ai déjà un compte, <a href="<?php echo $this->url(array(), 'login'); ?>">me connecter</a>.
+    </p>	
+</div><!--/span-->
+
+
+<script>
+    $(function() {
+        $( "#birthday" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1950:"
+        });
+    });
+</script>

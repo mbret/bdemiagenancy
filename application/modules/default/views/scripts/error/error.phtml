@@ -1,0 +1,28 @@
+
+<div class="container">
+    
+    <div class="hero-unit">
+        <h1>Une erreur innatendu viens d'avoir lieu !</h1>
+        <p><?php echo $this->message ?></p>
+        <p><a class="btn btn-primary btn-large" href="<?php echo $this->url(); ?>">Retour à l'accueil</a></p>
+    </div>
+
+      <?php if (isset($this->exception)): ?>
+
+      <h3>Exception information:</h3>
+      <p>
+          <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+      </p>
+
+      <h3>Stack trace:</h3>
+      <pre><?php echo $this->exception->getTraceAsString() ?>
+      </pre>
+
+      <h3>Request Parameters:</h3>
+      <pre><?php echo $this->escape(var_export($this->request->getParams(), true)) ?>
+      </pre>
+
+      <?php endif ?>
+
+</div>
+

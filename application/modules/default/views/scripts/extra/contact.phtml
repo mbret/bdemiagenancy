@@ -1,0 +1,115 @@
+<?php
+    $this->headTitle('Nous contacter');
+?>
+
+<section class="page-contact">
+    <h3>Adresse de contact</h3>
+    <hr>
+    <address>
+        <strong>Bureau Des Étudiants MIAGE NANCY </strong><br>
+        UFR MI 13, rue Michel Ney<br>
+        CO 75 5400 NANCY, France<br>
+        <a href="mailto:contact@bdemiagenancy.fr">contact@bdemiagenancy.fr</a>
+    </address>
+
+    <h3>Nous contacter en ligne</h3>
+    
+    <hr>
+    
+    <div class="alert alert-success">
+        Le site étant tout nouveau et encore en phase de test, n'hésitez pas à nous faire part de toutes remarques (amélioration(s), bug(s) ..).
+        Nous vous en seront très reconnaissant.
+    </div>
+    
+    <div class="hero-unit thumbnail">
+        
+        <form enctype="application/x-www-form-urlencoded" class="form-contact" action="" method="post">
+            <fieldset>
+                
+                <div class="control-group <?php if($this->form->name->hasErrors()): ?> error <?php endif; ?>">
+                    <div class="controls">
+                        <div>
+                            <input type="text" name="name" id="name" value="<?php echo $this->form->getValue('name'); ?>" placeholder="Votre nom (requis)" >
+                            <?php if($this->form->name->hasErrors()): ?>
+                                <ul class="help-block errors">
+                                <?php foreach ($this->form->name->getMessages() as $message): ?>
+                                    <li><?php echo $message ?></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group <?php if($this->form->email->hasErrors()): ?> error <?php endif; ?>">
+                    <div class="controls">
+                        <div>
+                            <input type="text" name="email" id="email" value="<?php echo $this->form->getValue('email'); ?>" placeholder="Votre email (requis)" >
+                            <?php if($this->form->email->hasErrors()): ?>
+                                <ul class="help-block errors">
+                                <?php foreach ($this->form->email->getMessages() as $message): ?>
+                                    <li><?php echo $message ?></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group <?php if($this->form->subject->hasErrors()): ?> error <?php endif; ?>">
+                    <div class="controls">
+                        <div>
+                            <input type="text" name="subject" id="subject" value="<?php echo $this->form->getValue('subject'); ?>" placeholder="Sujet"  >
+                            <?php if($this->form->subject->hasErrors()): ?>
+                                <ul class="help-block errors">
+                                <?php foreach ($this->form->subject->getMessages() as $message): ?>
+                                    <li><?php echo $message ?></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group <?php if($this->form->content->hasErrors()): ?> error <?php endif; ?>">
+                    <div class="controls">
+                        <div>
+                            <textarea name="content" id="content" placeholder="Votre message (requis)" rows="5" class="" ><?php echo $this->form->getValue('content'); ?></textarea>
+                            <?php if($this->form->content->hasErrors()): ?>
+                                <ul class="help-block errors">
+                                <?php foreach ($this->form->content->getMessages() as $message): ?>
+                                    <li><?php echo $message ?></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="control-group <?php if($this->form->captcha->hasErrors()): ?> error <?php endif; ?>">
+                    <div class="controls">
+                
+                        <div class="captcha-field">
+                            <?php echo $this->form->captcha; ?>
+                            <?php if($this->form->captcha->hasErrors()): ?>
+                                <ul class="help-block errors">
+                                <?php foreach ($this->form->captcha->getMessages() as $message): ?>
+                                    <li style="text-align: center"><?php echo $message ?></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <input type="submit" name="submit" id="submit" value="Envoyer" class="btn btn-info btn-submit btn-large">
+                </div>
+                
+            </fieldset>
+        </form>
+
+    </div>
+    
+</section>

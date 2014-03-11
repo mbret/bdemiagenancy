@@ -1,0 +1,86 @@
+<?php
+$this->headTitle('Ajouter un utilisateur');
+?>
+
+<div class="row-fluid">
+    <div class="box span12">
+        
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Ajouter un utilisateur</h2>
+        </div>
+        
+        <div class="box-content">
+
+            <!-- update form -->
+            <form class="form-horizontal" method="post"  action="">
+                
+                <fieldset>
+
+                    <div class="control-group">
+                        <label class="control-label" for="">Pseudo</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="username" name="username" type="text" value="<?php echo $this->form->getValue('username'); ?>" data-toggle="tooltip" data-placement="top" data-original-title="Majuscules non prises en compte">
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div> 
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Date de naissance</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="birthday" name="birthday" type="text" value="<?php echo $this->form->getValue('birthday'); ?>" >
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div> 
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="prependedInput">E-mail</label>
+                        <div class="controls">
+                            <input id="mail" class="input-xlarge" name="mail" size="16" type="text" value="<?php echo $this->form->getValue('mail'); ?>">
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Rôle</label>
+                        <div class="controls">
+                            <?php echo $this->form->getElement('roleId')->renderViewHelper(); ?>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Mot de passe</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="password" name="password" type="password" value="<?php echo $this->form->getValue('password'); ?>" data-toggle="tooltip" data-placement="top" data-original-title="Le mot de passe dois faire au moins 4 caractères de long. Pour le rendre plus sûr, combinez des majuscules, minuscules, et des chiffres.">
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div> 
+                    
+                    <div class="control-group">
+                        <label class="control-label" for="">Retapez le mot de passe</label>
+                        <div class="controls">
+                            <input class="input-xlarge" id="checkPassword" name="checkPassword" type="password" value="<?php echo $this->form->getValue('checkPassword'); ?>" data-toggle="tooltip" data-placement="top" data-original-title="">
+                            <span class="help-inline red">Requis</span>
+                        </div>
+                    </div>  
+                    
+                    <div class="form-actions">
+                        <button type="submit" name="submit" id="submit" class="btn btn-primary btn-submit">Enregistrer</button>
+                        <button class="btn" type="reset">Annuler</button>
+                    </div>
+                    
+                </fieldset>
+            </form>
+            
+        </div>
+    </div><!--/span-->
+</div>
+
+<script>
+    $(function() {
+        $( "#birthday" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1950:"
+        });
+    });
+</script>

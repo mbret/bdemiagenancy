@@ -1,0 +1,60 @@
+<?php
+$this->headTitle('Connexion');
+$this->placeHolder('body')->set('login'); // set the body to login for special style
+?>
+
+
+<div class="login-box">
+        <div class="icons">
+            <a href="<?php echo $this->url(array(), 'home'); ?>" title="Retour site"><i class="icon-home"></i></a>
+        </div>
+        <h2>Connexion utilisateur</h2>
+
+        <?php echo $this->renderMessages('error'); ?>
+        <?php echo $this->renderMessages('warning'); ?>
+
+        <form class="form-horizontal" method="post" action="">
+            
+            <fieldset>
+                
+                <div class="input-prepend" title="Pseudo">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    <input class="input-large span10" name="username" id="username" type="text" placeholder="Pseudo"/>
+                    <?php if($this->form->username->hasErrors()): ?>
+                        <ul class="help-block errors">
+                        <?php foreach ($this->form->username->getMessages() as $message): ?>
+                            <li><?php echo $message ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="input-prepend" title="Mot de passe">
+                    <span class="add-on"><i class="icon-lock"></i></span>
+                    <input class="input-large span10" name="password" id="password" type="password" placeholder="Mot de passe"/>
+                    <?php if($this->form->password->hasErrors()): ?>
+                        <ul class="help-block errors">
+                        <?php foreach ($this->form->password->getMessages() as $message): ?>
+                            <li><?php echo $message ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="button-login">	
+                    <button type="submit" class="btn btn-primary btn-submit"><i class="icon-off icon-white"></i> Login</button>
+                </div>
+                <div class="clearfix"></div>
+
+            </fieldset>
+        </form>
+        <hr>
+        <h3>Mot de passe oublié ?</h3>
+        <p>
+            Pas de problème, <a href="#">cliquez ici</a> pour réinitialiser votre mot de passe.
+        </p>
+        <hr>
+        <p>Je n'ai pas de compte, <a href="<?php echo $this->url(array(),'subscribe'); ?>">m'inscrire</a>.</p>
+</div><!--/span-->

@@ -1,0 +1,46 @@
+<?php
+
+?>
+
+<div class="container">
+    <?php echo $this->generateBreadCrumb(); ?>
+</div>
+
+<!-- Container de page -->
+<div class="container page-about" >
+    
+    <!-- Ligne de contenu -->
+    <div class="row row-content sidebar-container">
+        <div class="span9">
+            
+            <!-- SECTION PRINCIPAL -->
+            <section id="section-page" role="main">
+                <!-- Article principal -->
+                <article class="post post-extra">
+                    
+                    <header>
+                        <h1><?php echo $this->placeholder('articleTitle'); ?></h1>
+                    </header>
+
+                    <div class="post-wrapper">
+                        
+                        <?php echo $this->render('extra/'.Zend_Controller_Front::getInstance()->getRequest()->getActionName().'.phtml'); ?>
+                        
+                        <footer>
+
+                        </footer>
+                        
+                    </div>
+                    
+                </article>
+
+            </section>
+
+        </div>
+
+        <div class="span3">
+            <?php echo $this->render('index/_sidebar.phtml'); ?>
+        </div>
+
+    </div>
+</div>

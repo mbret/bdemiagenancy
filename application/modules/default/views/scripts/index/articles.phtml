@@ -1,0 +1,81 @@
+<?php
+    $this->headTitle('Actualités');
+?>
+
+<div class="container">
+    <?php echo $this->generateBreadCrumb(); ?>
+</div>
+
+<!-- Container de page -->
+<div class="container container-main" id="page-articles">
+    
+    <div class="row row-content sidebar-container">
+        
+        <!-- Colonne gauche -->
+        <div class="span9">
+            
+            <?php echo $this->render('index/articlespost.phtml'); ?>
+            
+            <?php if(!empty($this->articles)): ?>
+                <div id="last_msg_loader"><i class="icon-circle-arrow-down icon-2x "></i></div>
+            <?php else: ?>
+                <div id="last_msg_loader">Aucun article</div>
+            <?php endif; ?>    
+            
+        </div>
+        
+        <div class="span3">
+            
+            <?php echo $this->render('index/_sidebar.phtml'); ?>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var OLD_OFFSET = 0;
+    var OFFSET = parseInt($("article.post:last").attr("rel"));
+    var COUNT = parseInt($("article.post:last").attr("rel1"));
+    
+    // recherche courante
+    var SEARCH = "<?php echo $this->search; ?>";
+
+    function last_msg_funtion(){
+        // Si on essai de charger un contenu qui n'est pas encore arrivé (scrolling barbare)
+        if(OFFSET > OLD_OFFSET){ // Si l'offset est encore le même que l'ancien on charge pas
+            OLD_OFFSET = OFFSET;
+            //alert('haha');
+            $('div#last_msg_loader').html('<i class="icon-spinner icon-spin icon-2x"></i>');
+            //alert("<?php echo $this->baseUrl(); ?>/index/articles/c/"+COUNT+"/o/"+OFFSET+SEARCH);
+            $.post("<?php echo $this->baseUrl(); ?>/index/articles/c/"+COUNT+"/o/"+OFFSET+SEARCH,
+                function(data){
+                    data = $.trim(data); // nettoyage de chaine !important 
+                    if (data != ""){
+                        $("article.post:last:last").after(data); 
+                        OFFSET = parseInt($("article.post:last").attr("rel"));
+                        $('div#last_msg_loader').html('<i class="icon-circle-arrow-down icon-2x "></i>');
+                        // On recharge les tooltip
+                        loadPopover();
+                        FB.XFBML.parse(); 
+                    }
+                    else{
+                        $('div#last_msg_loader').html('<i class="icon-retweet"></i> Il n\'y a plus d\'articles à charger');
+                    }
+                }
+             );
+        }
+    }; 
+
+    $(window).scroll(function(){
+        if ($(window).scrollTop() == $(document).height() - $(window).height()){
+            last_msg_funtion();  
+        }
+    }); 
+    
+});
+</script>

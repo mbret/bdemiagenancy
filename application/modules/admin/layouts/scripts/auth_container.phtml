@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+    
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <?php
+        $this->headTitle()->setPostfix(' - Authentification - BDE Miage Nancy');
+                
+        // My style
+        $this->headLink()->appendStylesheet(RESOURCES_BASEURL . '/css/admin/auth.css');
+        
+        // My script
+        $this->headScript()->appendFile(RESOURCES_BASEURL . "/js/script.js");
+        $this->headScript()->appendFile(RESOURCES_BASEURL . "/js/admin/auth.js");
+        
+        echo $this->headMeta();
+        echo $this->headTitle();
+        echo $this->headLink();
+        echo $this->headScript();
+    ?>
+    
+    
+    
+</head>
+    <body class="auth <?php echo $this->placeHolder('body'); ?>">
+
+        <header id="header-main" role="banner">
+            <div class="header-logo-container">
+                <a href="<?php echo $this->url(array(), 'home'); ?>" title="Accueil du site"></a>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <section role="main" class=" main">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="row-fluid">
+                        <?php echo $this->layout()->content ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>

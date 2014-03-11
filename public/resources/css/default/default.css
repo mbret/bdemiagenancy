@@ -1,0 +1,594 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+    Created on : Mar 10, 2014, 5:03:49 PM
+    Author     : Maxime
+*/
+/*===============================================================================================
+                        
+                                RESET / INIT / OVERWRITE PLUGINS
+
+===============================================================================================*/
+/* Multiple dropdown (amélioration bootstrap) */
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 4px;
+    visibility: hidden;
+    margin-top: -1px;
+}
+.dropdown-menu li:hover > .sub-menu {
+    visibility: visible;
+    display: block;
+}
+textarea, 
+input[type="text"], 
+input[type="password"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="date"], 
+input[type="month"], 
+input[type="time"], 
+input[type="week"], 
+input[type="number"], 
+input[type="email"], 
+input[type="url"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="color"]{
+    padding:20px;
+}
+.modal{
+    z-index: 5002;
+}
+.modal-backdrop{
+    z-index: 5001;
+}
+
+.i-am-new{
+    margin-top: 40px !important;
+    z-index: 2999 !important; /* en dessous de la navbar */
+    width: 100% !important;
+    left: 0px !important;
+}
+.i-am-new li{
+    border-right: 0px !important;
+    border-left: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+/*===============================================================================================
+                        
+                                        COMMON
+
+===============================================================================================*/
+body{
+    background-image: url('../../images/darkgrain.png');
+    font: normal normal normal 13px/1.7em 'Open Sans', arial, sans-serif;
+}
+hr.white{
+    margin: 2px 0;
+    border: 0;
+    border-top: 1px solid #E3E3E3;
+    border-bottom: 1px solid #F3F3F3;
+}
+.breadcrumb{
+    background: none;
+    border:none !important;
+    font-size: 17px;
+    text-shadow: white 1px 1px 0;
+    color: #636161;
+    margin-bottom: 0px;
+    font-style: italic;
+}
+.tooltip{
+    text-shadow: none;
+    font-family: 'Open Sans', arial, sans-serif !important;
+}
+.shadow{
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 3px 0px #4a4a4a;
+    -moz-box-shadow: 0px 0px 3px 0px #4a4a4a;
+    box-shadow: 0px 0px 3px 0px #4a4a4a;
+}
+/* Style pour le contenu de la page courante hors header et footer */
+.container-main{
+    text-shadow: white 1px 1px 0px;
+    color: #333;
+}
+.row-header{
+    margin-bottom:30px;
+}
+.hero-unit ul.errors{
+    font-size: 13px;
+}
+/*===============================================================================================
+                        
+                                        HEADER
+
+===============================================================================================*/
+#header-main{
+    padding: 60px 0px 0px 0px;
+    text-shadow: white 1px 1px 0px;
+    overflow: hidden;
+}
+.header-logo-container a{
+    display: block;
+    background-image: url('../../images/header.png');
+    width: 100%;
+    background-repeat: no-repeat;
+    height:366px;
+    background-position: center;
+}
+
+div.header-headband{
+    text-align: center;
+    font-style: italic;
+    font-size: 13px;
+    color: #666;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    cursor: default;
+}
+
+.header-first-headband{
+    height: 32px;
+    vertical-align: bottom;
+}
+.header-first-headband h6{
+    line-height:40px;
+    display: inline;
+    text-transform: none;
+}
+.header-search{
+    float:right;
+}
+/*  
+======= Barre de navigation ===================
+
+     Barre de navigation en haut
+     du site
+
+===============================================
+*/
+.navbar{
+    width:100%;
+    z-index: 3000;
+}
+.navbar .navbar-inner{
+    padding: 0px 20px 0px 20px;
+}
+.navbar-identity{
+    font-size: 15px;
+}
+.navbar .navbar-inner a{
+    height:20px; /* fixe font awesome pour eviter le debordement des 40px */
+}
+.navbar a.brand img{
+    max-height: 30px;
+}
+.navbar a.brand{
+    padding:5px 20px;
+}
+.navbar .btn-login{
+    margin-right:5px;
+}
+.navbar ul.dropdown-menu{
+    margin-top: -5px;
+}
+/*===============================================================================================
+                        
+                                        SITE BODY
+
+===============================================================================================*/
+/*  
+======= Article du site ======================
+
+     Style des articles
+
+===============================================
+*/
+.post{
+    background-color: white;
+    border: 1px solid #C4C4C4;
+    -webkit-border-radius: 10px 10px 10px 0px;
+    -moz-border-radius: 10px 10px 10px 0px;
+    border-radius: 10px 10px 10px 0px;
+    -webkit-box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    margin-bottom: 50px;
+}
+.post-extra{
+    text-align: justify;
+}
+.post .post-wrapper{
+    padding:10px;
+}
+.post header{
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+    margin-bottom:10px;
+    padding:20px;
+    position: relative;
+    border-bottom: 1px solid #DDD;
+    background-color: #FAFAFA;
+    background-image: -moz-linear-gradient(top, #FAFAFA, #EFEFEF);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FAFAFA), to(#EFEFEF));
+    background-image: -webkit-linear-gradient(top, #FAFAFA, #EFEFEF);
+    background-image: -o-linear-gradient(top, #FAFAFA, #EFEFEF);
+    background-image: linear-gradient(to bottom, #FAFAFA, #EFEFEF);
+}
+.post header time{
+    font-size: 23px;
+    width: 45px;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left:-60px;
+    top:70px;
+    line-height: 32px;
+}
+.post header time .day{
+    font-weight: bold;
+    font-size: 35px;
+}
+.post header h1{
+    cursor: default;
+    font-size: 33px;
+}
+.post header h1,
+.post header h1 a,
+.post header h2,
+.post header h2 a{
+    font-size: 33px;
+    color: #4191c4;
+    color: #4a4848;
+    font-weight: normal;
+    -line-height: 1.2;
+    margin-bottom:20px;
+}
+.post header h1 a:hover{
+    color: #2F7CAF;
+    color: #4191c4;
+}
+.post header a:hover{
+    text-decoration: none;
+}
+.post header .content{
+    color:#696969;
+    font-size: 13px;
+}
+.post header .content .author{
+    text-align: left;
+    font-size: 15px ;
+}
+.post footer ul,
+.post header ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+.post footer li,
+.post header li{
+    margin: 0 12px 4px 0;
+    list-style: none outside none;
+    float: left;
+    position: relative;
+}
+.post footer li.see{
+    clear: left;
+}
+.post footer{
+    -border-top: 1px dotted #d0d0d0;
+    padding:10px 10px 20px 10px;
+    color: #909090;
+    -font-size: 11px;
+    position: relative;
+    margin-top: 30px;
+}
+.post section{
+    padding:10px;
+}
+/* separateur (section) */
+.post section hr{
+    border-top: 1px solid #D1D1D1;
+}
+.post .tags a {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.comments .no-comments{
+    margin-bottom: 20px;
+    color: #808080;
+}
+.comments .no-comments img{
+    display: block;
+    margin-left:140px;
+}
+
+
+
+/*
+======= Page d'accueil ========================
+
+     Style de la page d'accueil
+
+===============================================
+*/
+#page-index {
+    text-shadow: white 1px 1px 0px;
+}
+#page-index article.about{
+    font-size: 1.3em;
+    line-height: 1.4em;
+    text-align: justify;
+}
+#page-index article.about p{
+    padding-top:10px;
+    font-style: italic;
+    font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'serif';
+}
+#page-index article.news time{
+    font-size: 23px;
+    display: inline-block;
+    line-height: 32px;
+    width:35px;
+}
+#page-index article.news time .day{
+    font-weight: bold;
+    font-size: 35px;
+}
+#page-index .widget-header h3{
+    font-weight: bold;
+    font-size: 18px;
+}
+#page-index .follow{
+    margin-top: 30px;
+}
+#page-index .calendar{
+    margin-top: 40px;
+}
+#page-index .calendar .quote{
+    font-family: 'The Girl Next Door', cursive;
+    font-size: 25px;
+    text-align: center;
+    padding: 15px 0px 20px 0px;
+}
+#page-index .da-slide .btn-large{
+   width: 100px;
+}
+#page-index .carousel{
+    border: 1px solid #DDD;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    padding:4px;
+}
+
+
+
+/*
+======= Page d'article (unique) ===============
+
+     Style de la page de visualisation
+     d'un article
+
+===============================================
+*/
+/*==================================================
+ * Style des commentaires
+ * ===============================================*/
+.comments .message-feed {
+    margin: 0px 10px 20px 15px;
+}
+.comments .message-feed .float-left{
+    float: left;
+    margin-right: 10px;
+}
+.comments .message-feed .float-right{
+    float: right;
+    margin-left: 10px;
+}
+.comments .message-feed img.avatar {
+    margin-top:20px;
+    max-width:50px;
+    max-height:50px;
+    padding:3px;
+    border: 1px solid #8C8C8C;
+    background-color:#fefefe;
+}
+.comments .msg-post-right {
+    padding-left:80px;
+}
+.comments .msg-post-left {
+    padding-right:80px;
+}
+.comments .message-wrapper {
+    padding: 5px;
+    display: block;
+    position:relative;
+}
+.comments .message-wrapper.above .arrow {
+    bottom: -8px;
+    left: 50%;
+    margin-left: -14px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 14px solid rgba(0, 0, 0, 0.3);
+}
+.comments .message-wrapper.right .arrow {
+    top: 50px;
+    left: -9px;
+    margin-top: -14px;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-right: 14px solid rgba(0, 0, 0, 0.3);
+}
+.comments .message-wrapper.below .arrow {
+    top: -8px;
+    left: 50%;
+    margin-left: -14px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 14px solid rgba(0, 0, 0, 0.3);
+}
+.comments .message-wrapper.left .arrow {
+    top: 50px;
+    right: -8px;
+    margin-top: -14px;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 14px solid rgba(0, 0, 0, 0.3);
+}
+.comments .message-wrapper.above:after {
+    bottom: -6px;
+    left: 50%;
+    margin-left: -15px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #ffffff;
+    content: ' ';
+}
+.comments .message-wrapper.right:after {
+    top: 50px;    left: -8px;    margin-top: -15px;    border-top: 15px solid transparent;    border-bottom: 15px solid transparent;    border-right: 15px solid #ffffff;    content: ' ';
+}
+.comments .message-wrapper.below:after {
+    top: -6px;    left: 50%;    margin-left: -15px;    border-left: 15px solid transparent;    border-right: 15px solid transparent;    border-bottom: 15px solid #ffffff;    content: ' ';
+}
+.comments .message-wrapper.left:after {
+    top: 50px;    right: -6px;    margin-top: -15px;    border-top: 15px solid transparent;    border-bottom: 15px solid transparent;    border-left: 15px solid #ffffff;    content: ' ';
+}
+.comments .message-wrapper .arrow,
+.comments .message-wrapper.above:after,
+.comments .message-wrapper.right:after,
+.comments .message-wrapper.below:after,
+.comments .message-wrapper.left:after {    position: absolute;    width: 0;    height: 0;}
+.comments .message-wrapper .inner {    border: 1px solid #aeacac;}
+.comments .message-wrapper .title {    padding: 5px 10px;    line-height: 1;    border-bottom: 1px solid #bbb;    background-color:#ddd;    font-size:12px;}
+.comments .message-wrapper .content {    background-color: #ffffff;    padding: 10px;}
+.comments .message-wrapper .content textarea {    -webkit-border-radius: 0px;    -moz-border-radius: 0px;    border-radius: 0px;    background-color:#fefefe;    border:1px solid #ccc;}
+.comments .message-wrapper .content.with-footer {    padding-bottom: 55px;}
+.comments .message-wrapper .content p, .message-wrapper .content ul, .message-wrapper .content ol {    margin-bottom: 0;    font-size:11px;}
+.comments .message-wrapper .content a {    font-weight:bold;}
+.comments .msg-footer {    position:absolute;    bottom:-20px;    left:-20px;    right:-20px;    background:#ddd;}
+.comments .custom-widget .msg-footer {    bottom:0px;    left:0px;    right:0px;}
+.comments .custom-widget-msg .msg-footer {    bottom:6px;    left:6px;    right:6px;    border-top:1px solid #bbb;}
+.comments .msg-footer p,
+.comments .msg-footer div.first-footer-div {    margin:10px 5px 5px 5px;    padding:0px;    font-size:11px;}
+.comments .custom-widget-msg .msg-footer p{    margin-top:5px;}
+.comments .msg-footer .btn img{    height:16px;    width:16px;}
+.comments .comment-form{    margin-top: 50px;}
+/*======= Page d'articles (Liste) ===============
+
+     Style de la page de visualisation
+     des articles
+
+===============================================*/
+#page-articles #last_msg_loader{    margin-bottom:40px;    text-align: center;}
+/*======= Sidebar ===============================
+
+     Style de la barre de navigation
+     latéral
+
+===============================================*/
+.sidebar{    position: relative;    font-size: 15px;    font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'serif';    text-shadow: white 1px 1px 0;}
+.sidebar.affix{    top: 40px;}
+.sidebar.absolute{    position: absolute;}
+.sidebar.fixed{    position: fixed;}
+.sidebar .indent{    -margin-top:90px;}
+.sidebar div.separate{    border-bottom: 1px dashed #B7B7B7;    margin:10px 0px 10px 0px;}
+.sidebar h3{    cursor: default;    font-size: 22px;    color:#636161;}
+ul.logo li.miagere{    background-image: url('../../images/miagere_small.png');}
+.sidebar .copyright{    color: #5e5e5e;    padding:10px;    margin:0px;}
+.sidebar .follow{    margin-bottom:10px;}
+.sidebar h3{    margin-bottom:10px;}
+.sidebar .follow a span{    color: darkgray;}
+.sidebar .follow .follow-group{    padding-left:21px;}
+.sidebar .follow a:hover span{    color: grey;}
+.sidebar .follow a span.follow-rss span{    color: #ffa256;}
+.sidebar .follow a:hover span.follow-rss span{    color: #e75f23;}
+.sidebar .follow a span.follow-fb span{    color: #6d8bca;}
+.sidebar .follow a:hover span.follow-fb span{    color: #3b5998;}
+.sidebar ul.alt{    padding-left:5px;}
+.sidebar ul.logo{    padding-left:23px;}
+.sidebar ul.unstyled{    padding-left:25px;}
+.sidebar ul.link{    padding-left: 5px;}
+.sidebar ul.link li a.archives-year{    color: #636161;}
+.sidebar ul.archives-month{    padding-left: 20px;    display: none;    padding-bottom: 5px;}
+.sidebar ul.archives-month-first{    display: block;}
+/*======= Page about ============================
+
+     Style de la page à propos
+
+===============================================*/
+.page-about .profil{    display: inline-block;    width: 48%;    margin-bottom: 20px;    height: 110px;    margin-right: 10px;}
+.page-about .profil .avatar{    display: inline-block;    height: 100%;    width: 30%;}
+.page-about .profil .avatar img{    max-width: 83%;    }
+.page-about .profil address{    display: inline-block;    margin: 0px;    height: 80px;    vertical-align: top;    width: 60%;    height: 100%;}
+.page-about .followus{    padding-bottom: 20px;}
+.page-about .media img{    max-width: 100px;}
+.page-about .followus .media img{    max-width: 50px;}
+/*  
+======= Contact ===============================
+
+                Contact
+
+===============================================
+*/
+.page-contact .form-contact textarea{ width: 90%; }
+/*===============================================================================================
+                        
+                                        FOOTER
+
+================================================================================================*/
+#footer{
+    font-size: 15px;
+    -font-family: 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'serif';
+    text-shadow: black 1px 1px 0;
+    -webkit-box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.6);
+    background: #EEE;
+    background: #f8f8f8;
+    background-color: #2f2f2f;
+    padding-top: 16px;
+    margin-top:100px;
+    border-top: 1px solid grey;
+    overflow: hidden;
+}
+#footer-background-img-container{    width: 940px;    margin: auto;    margin-top:-280px;}
+#footer-background-img{    
+    height: 296px;    
+    background-image: url('../../images/FooterG.jpg'), url('../../images/FooterD.jpg');    
+    background-position: left bottom, right bottom;    
+    background-repeat: no-repeat;
+}
+#footer .footer-link{    color: white;    min-height: 200px;}
+#footer .footer-link a{    text-shadow: 1px 1px 0px black !important;    color:#bdbec1;}
+#footer .footer-link a:hover{    color: #08C;    color: #08C;}
+#footer h3{    margin-bottom: 10px;}
+#footer ul{    padding-left:21px;}
+#footer ul.archives-month{    display: none;    padding-left: 22px;}
+#footer ul.archives-month-first{    display: block;}
+#footer .container-footer-main{    position:relative;    z-index: 1;}
+.footer-copyright{
+    cursor: default;
+    font-size: 13px;
+    padding:20px 0px 20px 0px;
+    margin-top:30px;
+    border-top: 1px dotted #AAA;
+    text-shadow: #333 1px 1px 0;
+    text-align: center;
+    color: #AAA;
+}
+.footer-copyright a{ color: white;}
+.footer-copyright a:hover{color: #08C;}

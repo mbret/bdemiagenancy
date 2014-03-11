@@ -1,0 +1,176 @@
+<?php
+$this->headTitle('Accueil');
+
+?>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+    </div>
+</div>
+
+<div class="container container-main" id="page-index">
+      
+    
+    
+    
+    <div class="row ">
+        
+        <div class="span12">
+
+            
+            <div id="da-slider" class="da-slider">
+
+                <?php foreach ($this->articles as $article): ?>
+                    
+                        <div class="da-slide">
+                            <article class="news">
+                                <h2><?php echo $article->forwardTitle; ?></h2>
+                                <p><?php echo $article->forwardContent; ?></p>
+
+                                <a href="<?php echo $this->url(array('controller'=> 'index', 'action' => 'article', 'id' => $article->id),'default',true); ?>" class="da-link btn btn-success btn-large">En lire plus !</a>
+                                <div class="da-img">
+                                    <time datetime="<?php echo $article->date; ?>">
+                                        <span class="month"><?php echo $this->MonthString($article->month, true); ?></span>
+                                        <span class="day"><?php echo $article->day; ?></span>
+                                    </time>
+                                    <!--<img src="images/1.png" alt="image01" />-->
+                                </div>
+                            </article>
+                        </div>
+                    
+             <?php endforeach; ?> 
+
+                <nav class="da-arrows">
+                    <span class="da-arrows-prev"></span>
+                    <span class="da-arrows-next"></span>
+                </nav>
+                
+                
+            </div>
+            
+        </div>
+        
+    </div>
+            
+
+    
+    <div  class="row">
+        
+
+    <!--
+    Left column
+    -->
+    <div class="span6 article-list">
+        <div class="colonne ">
+            
+            
+            
+        <!-- Carousel -->
+        <article>
+            
+            <div id="myCarousel" class="carousel slide">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    <?php foreach($this->carousel() as $key => $image): ?>
+                        <div class="item <?php echo ($key == 0)?  'active' : ''; ?>">
+                            <a href="<?php echo $this->baseUrl($this->getConfig()->settings->carouselDir . '/' . $image); ?>" target="_blank">
+                                <img src="<?php echo $this->baseUrl($this->getConfig()->settings->carouselDir . '/' . $image); ?>"/>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+            
+        </article>
+            
+            
+        
+        
+        <!--
+        Event calendat part
+        -->
+        <article class="calendar">
+            <div class="quote">
+                <div >Ne rien louper des événements !</div>
+                <div><img src="<?php echo RESOURCES_BASEURL . '/images/arrow2.png'; ?>"/></div>
+            </div>
+            <div class="widget">
+                <div class="widget-header">
+                        <i class="icon-pushpin"></i>
+                        <h3>Calendrier des évènements</h3>
+                </div> <!-- /widget-header -->
+                <div class="widget-content">
+                   <iframe src="https://www.google.com/calendar/embed?src=lf0rf276mcis24sjgg1lsut5ns%40group.calendar.google.com&ctz=Europe/Paris" style="border: 0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+                </div> <!-- /widget-content -->
+            </div>
+        </article>
+        
+
+        </div>
+    </div>
+    
+        
+        
+    <!--
+    Right column
+    -->
+    <div class="span6">
+        
+        
+        <!-- About part -->
+        <article class="about">
+            <div class="widget">
+                <div class="widget-header">
+                        <i class="icon-pushpin"></i>
+                        <h3>A propos du BDE Miage Nancy</h3>
+                </div> <!-- /widget-header -->
+                <div class="widget-content">
+                    <p>
+                        L’association dite « Bureau des Elèves de la Miage Nancy » fondée en 1974 a pour but :
+                        <br>
+                        <br>
+                        - D’établir entre tous ses membres des relations amicales et des liens de solidarité et d’entraide.
+                        <br>
+                        - D’utiliser ces relations dans un but d’intérêt général et au profit des associations
+                        <br>
+                        - De contribuer à la prospérité et au rayonnement de la MIAGE , notamment en mettant en œuvre tous les moyens propres à assurer l’efficacité de l’enseignement pratiqué à la MIAGE.
+                    </p>
+
+                    <div class="follow" style="text-align: left;">
+                        <div class="fb-like-box" data-href="https://www.facebook.com/bdemiagenancy?fref=ts" data-width="292" data-show-faces="true" data-stream="true" data-header="true"></div>
+                    </div>
+
+                </div> <!-- /widget-content -->
+            </div>
+        </article>
+        
+
+        
+    </div>
+
+</div>
+        
+    <div class="span5">
+        
+        
+    </div>
+    
+
+
+    
+    <footer>
+
+    </footer>
+            
+        
+</div>
+
+
+
+
+
+
