@@ -23,7 +23,7 @@ class Admin_Form_Article_Update extends Application_Form_Abstract
         ));
         
         $mapper = new Application_Model_Mapper_Category();
-        $options = Application_Model_Category::selectOptionFactory( $mapper->fetchAllOrdered());
+        $options = $this->buildOrdonnedCategoriesSelectOption($mapper->fetchAllOrdered());
         $this->addElement('select', 'categoryId', array(
             'required' => false,
             'data-rel' => 'chosen',

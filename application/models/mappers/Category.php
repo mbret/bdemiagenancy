@@ -32,7 +32,7 @@ class Application_Model_Mapper_Category extends Application_Model_Mapper_Abstrac
     }
     
     public function getLabelById($id){
-        if($id == null) return null;
+        if($id === null) return null;
         $row = $this->getDbTable()->fetchRow( $this->getDbTable()->select()
                 ->from($this->getDbTable(), 'label')
                 ->where('id = ?', (int)$id) );
@@ -105,43 +105,20 @@ class Application_Model_Mapper_Category extends Application_Model_Mapper_Abstrac
         return $this->fetchAll($select);
     }
     
-    // Retourne un tableau de categories avec leurs enfant
+    /**
+     * Return an array of category with a sub array of category for each category which has children
+     * 
+     * @param type $where
+     * @param type $order
+     * @param type $count
+     * @param type $offset
+     * @return type
+     */
     public function fetchAllOrdered($where = null, $order = null, $count = null, $offset = null){
-        $categories = $this->fetchAll($where, $order, $count, $offset);
-        
-        $ordonnedCat = array();
-        
-        foreach($categories as $category){
-            // On a un header
-            if(is_null($category->getParentId())){
-                $couple = array(
-                    'category' => $category,
-                    'lvl' => 0,
-                    'childs' => $this->fetchAllOrderedChilds($categories, $category, 1),
-                );
-                $ordonnedCat[] = $couple;
-            }
-        }
-        return $ordonnedCat;
+        return $this->buildOrdonnedCategoriesTree( $this->fetchAll($where, $order, $count, $offset) , null);
     }
     
-    public function fetchAllOrderedChilds($categories, $parent, $lvl){
-        $childs = array();
-        foreach($categories as $category){
-            
-            // On a un enfant
-            if($category->getParentId() === $parent->getId()){
-                
-                $couple = array(
-                    'category' => $category,
-                    'lvl' => $lvl,
-                    'childs' => $this->fetchAllOrderedChilds($categories, $category, $lvl + 1),
-                );
-                $childs[] = $couple;
-            }
-        }
-        return $childs;
-    }
+
     
     /**
      * 
@@ -165,6 +142,40 @@ class Application_Model_Mapper_Category extends Application_Model_Mapper_Abstrac
     public function remove($id){
         $where = $this->getDbTable()->getAdapter()->quoteInto('id = ?', (int)$id);
         return $this->getDbTable()->delete($where);
+    }
+    
+    
+    /*====================================================================================================================================
+     * 
+     *                                          Private functions
+     * 
+     =====================================================================================================================================*/
+    
+    /**
+     * Return fetched categories with their children as subarray
+     * 
+     * @param array $categories
+     * @param type $parentId
+     * @return array
+     */
+    private function buildOrdonnedCategoriesTree(array $categories, $parentId = null, $lvl = 0) {
+        $branch = array();
+        $i = 0;
+        foreach ($categories as $category) {
+            // We process only if this category should be added in the current branch
+            if ($category->getParentId() === $parentId) {
+                $children = $this->buildOrdonnedCategoriesTree($categories, $category->getId(), $lvl+1 ); // build the children tree of this category
+                $branch[$i] = array(
+                        'category' => $category,
+                        'lvl' => $lvl
+                    );
+                if ($children) {
+                    $branch[$i]['children'] = $children;
+                }
+                $i++;
+            }
+        }
+        return $branch;
     }
 }
 

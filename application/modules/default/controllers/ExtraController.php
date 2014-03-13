@@ -2,13 +2,6 @@
 
 class ExtraController extends Zend_Controller_Action{
 
-    /**
-     * Maj breadcrumb : Accueil > Extra >
-     */
-    public function init(){
-
-    }
-
     
     public function postDispatch() {
         parent::postDispatch();

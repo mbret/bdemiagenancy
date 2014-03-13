@@ -40,7 +40,8 @@ class Admin_Form_Category_Update extends Application_Form_Abstract{
         $validator = new My_Validate_NotIdentical($this->_id);
         $validator->setMessage("Une catégorie ne peut être parent d'elle même", My_Validate_NotIdentical::SAME);
         $mapper = new Application_Model_Mapper_Category();
-        $options = Application_Model_Category::selectOptionFactory( $mapper->fetchAllOrdered() , true);
+        $options = $this->buildOrdonnedCategoriesSelectOption($mapper->fetchAllOrdered());
+        $options[-1] = 'Aucune';
         $this->addElement('select', 'parentId', array(
             'MultiOptions' => $options,
             'label' => 'Catégorie parente',

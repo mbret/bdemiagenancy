@@ -1,6 +1,6 @@
 <?php
 
-class Default_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract
+class Application_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract
 {
     
     /**
@@ -21,9 +21,38 @@ class Default_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract
      */
     public function flashMessenger( $specificKey = null , $toString = false, $toJS = false)
     {
+        return $this->getContent($specificKey, $toString, $toJS);
+    }
+    
+    public function getContent( $specificKey = null , $toString = false, $toJS = false)
+    {
         
         $return = null;
         
+        $this->loadMessages();
+        
+        if( empty($this->_messages) ){
+            return ($toString) ? '' : array();
+        }
+        
+        // Specific key
+        if( isset($specificKey) ){
+            if( isset($this->_messages[$specificKey])){
+                $return = ($toString) ? $this->_messages[$specificKey][0] : $this->_messages[$specificKey];
+            }
+            else{
+                $return = ($toString) ? '' : array();
+            }
+        }
+        // entire messages
+        else{
+            $return = ($toString) ? $this->_messages[0][0] : $this->_messages;
+        }
+        
+        return ( $toJS ) ? $this->addSlashes( $return ) : $return;
+    }
+    
+    private function loadMessages(){
         if( ! isset($this->_messages) ){
             $flashMessenger = $this->_getFlashMessenger();
 
@@ -76,28 +105,6 @@ class Default_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract
                 }
             }
         }
-
-        
-        if( empty($this->_messages) ){
-            return ($toString) ? '' : array();
-        }
-        
-        // Specific key
-        if( isset($specificKey) ){
-            if( isset($this->_messages[$specificKey])){
-                $return = ($toString) ? $this->_messages[$specificKey][0] : $this->_messages[$specificKey];
-            }
-            else{
-                $return = ($toString) ? '' : array();
-            }
-        }
-        // entire messages
-        else{
-            $return = ($toString) ? $this->_messages[0][0] : $this->_messages;
-        }
-        
-        return ( $toJS ) ? $this->addSlashes( $return ) : $return;
-        
     }
     
     /**
@@ -114,6 +121,14 @@ class Default_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract
         return $entry;
     }
 
+    public function hasLabel( $label ){
+        $this->loadMessages();
+        if( isset( $this->_messages[$label] ) ){
+            return true;
+        }
+        return false;
+    }
+    
     /**
      * Lazily fetches FlashMessenger Instance.
      *

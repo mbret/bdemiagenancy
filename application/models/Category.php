@@ -8,9 +8,6 @@ class Application_Model_Category extends Application_Model_Abstract
     protected $_label;
     protected $_title;
     protected $_description;
-
-    //protected $_categories = array();
-    protected $_lvl;
     
     public function getId() {
         return $this->_id;
@@ -62,9 +59,6 @@ class Application_Model_Category extends Application_Model_Abstract
         return $this;
     }
 
-    /*public function addCategory(Application_Model_Category $category){
-        $this->_categories[] = $category;
-    }*/
     
     public function toArray(){
         return array(
@@ -86,12 +80,6 @@ class Application_Model_Category extends Application_Model_Abstract
         return $class;
     }
     
-    /*public function getCategories(){
-        foreach($this->_categories as $category){
-            $category->getCategories();
-        }
-    }*/
-    
     /**
      * Retourne toutes les categories enfants sous un unique tableau mais ordonné
      * Un champs 'lvl' est enregistré pour reconnaitre les enfants des enfants
@@ -105,43 +93,16 @@ class Application_Model_Category extends Application_Model_Abstract
      * @param type $ar
      * @param type $lvl 
      */
-    public static function getOrdonnedCategory(&$ar, $lvl){
-        foreach($this->_categories as $category){
-            $current = $category->toArray();
-            $current['lvl'] = $lvl;
-            $ar[] = $current;
-            $category->getCategoriesOnOneArray($ar, $lvl+1);
-        }
-        return $ar;
-    }
+//    public static function getOrdonnedCategory(&$ar, $lvl){
+//        foreach($this->_categories as $category){
+//            $current = $category->toArray();
+//            $current['lvl'] = $lvl;
+//            $ar[] = $current;
+//            $category->getCategoriesOnOneArray($ar, $lvl+1);
+//        }
+//        return $ar;
+//    }
     
-    /**
-     * Génère un tableau pour un <option> de type :
-     * cat1
-     * — cat3 (enfant de cat1)
-     * cat2
-     * — cat4 (enfant de cat2)
-     * —— cat8 (enfant de cat4)
-     * 
-     * @param type $ordonnedCategories
-     * @return type
-     */
-    public static function selectOptionFactory($ordonnedCategories = array(), $default = false){
-        $options = array();
-        if($default){
-            $options[-1] = 'Aucune';
-        }
-        $indent = '';
-        foreach($ordonnedCategories as $entry){
-            for($i=0;$i<$entry['lvl'];$i++) $indent .= '—';
-            $options[$entry['category']->getId()] = $indent . ' ' . $entry['category']->getTitle();
-            $other = Application_Model_Category::selectOptionFactory($entry['childs']);
-            foreach ($other as $key => $value){
-               $options[$key] = $value;
-            }
-        }
-        
-        return $options;
-    }
+    
 }
 

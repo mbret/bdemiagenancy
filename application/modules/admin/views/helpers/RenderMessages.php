@@ -30,9 +30,10 @@ class Admin_View_Helper_RenderMessages extends Zend_View_Helper_Abstract
     }
 
     public function renderMessages($lib){
-        if($this->view->messages($lib)){
+        $helper = $this->view->getHelper('flashMessenger');
+        if($helper->hasLabel( $lib )){
             $content = '';
-            foreach ($this->view->messages($lib) as $message){
+            foreach ( $helper->getContent( $lib ) as $message) {
                 $content .= sprintf('<p>%s</p>',$message);
             }
             return sprintf($this->_templates[$lib], $content);

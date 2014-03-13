@@ -49,7 +49,7 @@ class Admin_CategoryController extends Admin_AbstractController{
         $categories = $mapper->fetchAll();
         foreach($categories as $category){
             $cat = $category->toView();
-            $cat->parentLabel = $mapper->getLabelById($category->getParentId());
+            $cat->parentLabel = $mapper->getLabelById( $category->getParentId() );
             $this->view->categories[] = $cat;
         }
     }

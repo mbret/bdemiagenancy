@@ -1,20 +1,9 @@
 <?php
 
 class IndexController extends Zend_Controller_Action{
-
-    protected $_userMapper;
-    protected $_articleMapper;
-    protected $_categoryMapper;
-    protected $_tagMapper;
-    protected $_settings;
     
     public function init(){
-        //var_dump( get_magic_quotes_gpc());exit();
         parent::init();
-        $this->_userMapper = new Application_Model_Mapper_User();
-        $this->_categoryMapper = new Application_Model_Mapper_Category();
-        $this->_articleMapper = new Application_Model_Mapper_Article();
-        $this->_tagMapper = new Application_Model_Mapper_Tag();
         $this->_settings = $this->getInvokeArg('bootstrap')->getResource('config')->settings;
     }
 
@@ -24,24 +13,28 @@ class IndexController extends Zend_Controller_Action{
      *  * Liste les articles mis en avant et ou les derniers articles rédigé 
      */
     public function indexAction(){
+        $userMapper = new Application_Model_Mapper_User();
+        $categoryMapper = new Application_Model_Mapper_Category();
+        $articleMapper = new Application_Model_Mapper_Article();
+        $tagMapper = new Application_Model_Mapper_Tag();
         $category = new Application_Model_Category();
         $user = new Application_Model_User();
-        $articles = $this->_articleMapper->fetchLastForward( (int)$this->_settings->nbArticlesForward ); // get last forwarded articles
+        $articles = $articleMapper->fetchLastForward( (int)$this->_settings->nbArticlesForward ); // get last forwarded articles
         $viewArticles = array();
         
         foreach($articles as $article){
-            $this->_userMapper->find($article->getUserId(), $user); // search user
+            $userMapper->find($article->getUserId(), $user); // search user
             $viewArticle = $article->toView();
             $viewArticle->author = $user->toView(); // set author
             $viewArticle->tags = array(); // set tags
-            foreach ($this->_tagMapper->fetchAllByArticle($article->getId()) as $tag) {
+            foreach ($tagMapper->fetchAllByArticle($article->getId()) as $tag) {
                 $viewArticle->tags[] = $tag->toView();
             };
-            $dates = $this->_articleMapper->getEditionsDates($article->getId(), 'date DESC'); // set last edition date
+            $dates = $articleMapper->getEditionsDates($article->getId(), 'date DESC'); // set last edition date
             if(!empty( $dates ) ){
                 $viewArticle->lastEditionDate = $dates[0]; 
             }
-            $this->_categoryMapper->find($article->getCategoryId(), $category);
+            $categoryMapper->find($article->getCategoryId(), $category);
             $viewArticle->category = $category->toView();
             $viewArticles[] = $viewArticle;
         }
@@ -172,7 +165,7 @@ class IndexController extends Zend_Controller_Action{
         else{
             
             // EXIT : Chargement + On verifie l'existence
-            if( !is_integer($this->_getParam('id')) || !$mapper->find((int)$this->_getParam('id'), $article) ){
+            if( !$mapper->find((int)$this->_getParam('id'), $article) ){
                 $this->_helper->flashMessenger(array('warning' => "L'article demandé n'existe pas !"));
                 $this->_helper->_redirector('index', 'index', 'default');
             }
@@ -270,87 +263,5 @@ class IndexController extends Zend_Controller_Action{
         }
     }
     
-    /**
-     * Méthode qui gère la creation et la gestion du formulaire
-     */
-    protected function _contact(){
-        $form = new Default_Form_Contact();
-        $this->view->form = $form;
-        // Une fois le formulaire posté on redirige vers la page de contact
-        if ($this->getRequest()->isPost()){
-            
-            $this->_helper->_redirector('page', 'index', 'default', array('label' => 'contact'));
-        }
-    }
-    
-    /**
-     * Enregistre un commentaire pour un article et redirige vers cette article.
-     */
-    public function addcommentAction()
-    {
-        if($this->_hasParam('articleid')){
-            
-            // Verification connexion 
-            $identity = Zend_Auth::getInstance();
-            if($identity->hasIdentity()){
-                
-                $articleMapper = new Application_Model_Mapper_Article();
-                $article = new Application_Model_Article();
-                if($articleMapper->find($this->_getParam('articleid'), $article)
-                        && $article->getIsPublished()){ // L'article dois être publié pour avoir des commentaires
-                        
-                    $identity = Zend_Auth::getInstance()->getIdentity();
-                    $mapper = new Application_Model_Mapper_Comment();
-                    $form = new Default_Form_Comment();
-                    $request = $this->getRequest();
-                    if ($request->isPost()){
-                        if($form->isValid($request->getPost())){
-                            
-                            $data = $form->getValues();
-                            
-                            $mapper->beginTransaction();
-
-                            $comment = new Application_Model_Comment();
-                            $comment->setOptions(array(
-                                'content' => $data['content'],
-                                'userId' => $identity->id,
-                                'articleId' => $article->getId(),
-                                'isPublished' => true,));
-                            $mapper->save($comment);
-
-                            $mapper->commit();
-
-                            $this->_helper->flashMessenger(array('success' => "Commentaire ajouté."));
-
-                        }
-                        else{
-                            $this->_helper->flashMessenger(array('error' => "Commentaire non valide !"));
-                        }
-                    }
-                    else{
-
-                    }
-                }
-                else{
-                    $this->_helper->flashMessenger(array('warning' => "L'article demandé n'existe pas !"));
-                }
-                        
-            }
-            else{
-                $this->_helper->flashMessenger(array('warning' => "Vous devez vous connecter pour poster un commentaire !"));
-                $this->_helper->_redirector('login', 'auth', 'admin');
-            }
-            // Redirect every times
-            $this->_helper->_redirector('article', 'index', 'default', array('id' => $this->_getParam('articleid')));
-        }
-        else{
-            $this->_helper->_redirector('index', 'index', 'default');
-        }
-    }
-    
-    
-    public function searchAction(){
-        
-    }
 }
 

@@ -27,7 +27,8 @@ class Admin_Form_Category_Add extends Application_Form_Abstract{
         
         // Categorie
         $mapper = new Application_Model_Mapper_Category();
-        $options = Application_Model_Category::selectOptionFactory( $mapper->fetchAllOrdered() , true);
+        $options = $this->buildOrdonnedCategoriesSelectOption($mapper->fetchAllOrdered());
+        $options[-1] = 'Aucune';
         $this->addElement('select', 'parentId', array(
             'MultiOptions' => $options,
             'label' => 'Catégorie parente',
