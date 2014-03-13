@@ -14,9 +14,6 @@ class ExtraController extends Zend_Controller_Action{
         parent::postDispatch();
         
         $this->_helper->viewRenderer->setRender('default-container');
-        
-        // Ajout des messages d'erreur à la page html
-        $this->view->headScript()->appendScript($this->view->getHelper('flashMessengerToNoty')->flashMessengerToNoty());
     }
     
     
@@ -39,8 +36,11 @@ class ExtraController extends Zend_Controller_Action{
         if ($this->getRequest()->isPost()){
             
             $formData = $this->getRequest()->getPost();
-            if ($form->isValid($formData)){
-                
+            
+            if ( ! $form->isValid($formData)){
+                $this->_helper->flashMessenger(array('warning' => "Il y'a des erreurs dans le formulaire"));
+            }
+            else{    
                 /**
                  * Configuration MAIL
                  */
@@ -67,9 +67,6 @@ class ExtraController extends Zend_Controller_Action{
                 
                 $this->_helper->flashMessenger(array('success' => "Votre message a bien été pris en compte. Merci de nous avoir contacté."));
                 $form->reset();
-            }
-            else{
-                $this->_helper->flashMessenger(array('warning' => "Il y'a des erreurs dans le formulaire"));
             }
         }
         

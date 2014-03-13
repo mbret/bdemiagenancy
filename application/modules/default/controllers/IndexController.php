@@ -18,12 +18,6 @@ class IndexController extends Zend_Controller_Action{
         $this->_settings = $this->getInvokeArg('bootstrap')->getResource('config')->settings;
     }
 
-    public function postDispatch(){
-        parent::postDispatch();
-        
-        // Ajout des messages d'erreur à la page html
-        $this->view->headScript()->appendScript($this->view->getHelper('flashMessengerToNoty')->flashMessengerToNoty());
-    }
     
     /**
      * Accueil
@@ -172,13 +166,13 @@ class IndexController extends Zend_Controller_Action{
         $preview = $this->_getParam('preview', false);
         $viewPreview = false;
         
-        if(!$this->_hasParam('id')){
+        if( ! $this->_hasParam('id') ){
             $this->_helper->_redirector('index', 'index', 'default');
         }
         else{
             
             // EXIT : Chargement + On verifie l'existence
-            if(!$mapper->find((int)$this->_getParam('id'), $article)){
+            if( !is_integer($this->_getParam('id')) || !$mapper->find((int)$this->_getParam('id'), $article) ){
                 $this->_helper->flashMessenger(array('warning' => "L'article demandé n'existe pas !"));
                 $this->_helper->_redirector('index', 'index', 'default');
             }
